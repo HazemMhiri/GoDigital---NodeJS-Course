@@ -1,0 +1,16 @@
+{
+  "name": "my-node-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon ."
+  },
+  "author": "Brahim Hazem Mhiri",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
