@@ -1,0 +1,19 @@
+{
+    "games": [
+        {
+            "title": "The legend of Zelda: Ocarina of time",
+            "year": 1997,
+            "developper": "Nintendo"
+        },
+        {
+            "title": "TESV - Skyrim",
+            "year": 2011,
+            "developper": "Bethesda"
+        },
+        {
+            "title": "Street Fighter 2",
+            "year": 1996,
+            "developper": "Capcom"
+        }
+    ]
+}

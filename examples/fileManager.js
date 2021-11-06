@@ -47,7 +47,7 @@ function readBigFile() {
 
 function getAbsolutePath() {
   const projectDir = path.dirname(__dirname);
-  const absolutePath = ath.join(projectDir, "modules", "fileManager.js");
+  const absolutePath = path.join(projectDir, "modules", "fileManager.js");
 }
 
 module.exports.createJSON = createJSON;

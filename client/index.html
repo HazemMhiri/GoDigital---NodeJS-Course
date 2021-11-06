@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket testing</title>
+
+    <script
+      src="https://cdn.socket.io/4.3.2/socket.io.min.js"
+      integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>
+      Hello we are testing our web socket's client-server communication here!
+    </h1>
+
+    <p id="data-received"></p>
+
+    <div id="chat-content"></div>
+    <input id="chat-input" type="text" /><button onclick="sendMessage()">
+      Send
+    </button>
+
+    <script>
+      const socket = io("http://127.0.0.1:8080");
+
+      socket.on("connect", () => {
+        console.log(
+          "successfully connected to our server via websockets! socket id: " +
+            socket.id
+        );
+      });
+
+      socket.on("message", (payload) => {
+        console.log("received message.", { payload });
+
+        const chatContentEl = document.getElementById("chat-content");
+        const messageEl = document.createElement("p");
+        messageEl.innerText = payload.data;
+
+        chatContentEl.append(messageEl);
+      });
+
+      socket.on("data", (payload) => {
+        const dataShowEl = document.getElementById("data-received");
+        dataShowEl.innerText = JSON.stringify(payload.data);
+      });
+
+      function sendMessage() {
+        const chatInputEl = document.getElementById("chat-input");
+
+        socket.emit("message", { data: chatInputEl.value });
+
+        const chatContentEl = document.getElementById("chat-content");
+        const messageEl = document.createElement("p");
+        messageEl.innerText = chatInputEl.value;
+
+        chatContentEl.append(messageEl);
+
+        chatInputEl.value = "";
+      }
+    </script>
+  </body>
+</html>
