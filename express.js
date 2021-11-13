@@ -4,7 +4,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 const { Server } = require("socket.io");
-const connectToDB = require("./db");
+const myDB = require("./db");
+global.db = myDB;
 
 const myData = require("./placeholderData.json");
 
@@ -27,9 +28,6 @@ app.use("/", routes);
 
 const server = app.listen(PORT, () => {
   console.log("server is online on port: " + PORT);
-
-  const myDB = connectToDB();
-  global.db = myDB;
 });
 
 const io = new Server(server, {

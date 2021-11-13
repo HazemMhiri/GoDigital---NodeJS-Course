@@ -21,4 +21,4 @@ function connectToMongoDB() {
   return db;
 }
 
-module.exports = connectToMongoDB;
+module.exports = connectToMongoDB();
